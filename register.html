@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: "Open Sans";
+            font-size: 14px;
+        }
+        
+        .container {
+            width: 500px;
+            margin: 25px auto;
+        }
+        
+        a {
+            color: chartreuse;
+        }
+        
+        form {
+            padding: 20px;
+            background: #2c3e50;
+            color: #fff;
+            border-radius: 4px;
+            margin-top: 100px;
+        }
+        
+        form label,
+        form input,
+        form button,
+        form select {
+            border: 0;
+            margin-bottom: 3px;
+            display: block;
+            width: 100%;
+        }
+        
+        form input,
+        form select {
+            height: 25px;
+            line-height: 25px;
+            background: #fff;
+            color: #000;
+            padding: 0 6px;
+            box-sizing: border-box;
+        }
+        
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+        
+        body {
+            background-image: url("images/signup-bg.jpg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .title {
+            text-align: center;
+            margin-bottom: -30px;
+        }
+        
+        form button {
+            height: 30px;
+            line-height: 30px;
+            background: #e67e22;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            cursor: pointer;
+        }
+        
+        form .error {
+            color: #ff0000;
+        }
+        
+        .article-reference {
+            margin-top: 15px;
+        }
+        
+        .article-reference a {
+            color: #e67e22;
+        }
+    </style>
+</head>
+<script>
+    $(function() {
+
+        $("form[name='registration']").validate({
+
+            rules: {
+                name: "required",
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true,
+                    minlength: 5
+                },
+                confirmPassword: {
+
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#password"
+
+                },
+                dob: "required",
+                phone: {
+
+                    required: true,
+                    maxlength: 10,
+                    minlength: 10
+                }
+
+            },
+
+
+            messages: {
+                name: "Please enter your name",
+                email: "Please enter a valid email address",
+                password: {
+                    required: "Please provide a password",
+                    minlength: "Your password must be at least 5 characters long",
+
+                },
+                confirmPassword: {
+                    required: "Please provide a password",
+                    minlength: "Your password must be at least 5 characters long",
+                    equalTo: "Please enter same value"
+                },
+                dob: "Please enter your dob",
+                phone: {
+                    required: " Please enter your phone no",
+                    minlength: "please enter minimum 10 digits",
+                    maxlength: "Only 10 digits!!Please check"
+                }
+
+
+            },
+
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    });
+
+    function vaidate() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const dob = document.getElementById("dob").value;
+
+
+
+        localStorage.setItem("NAME", name);
+        localStorage.setItem("EMAIL", email);
+        localStorage.setItem("DOB", dob);
+        return;
+    }
+</script>
+
+<body>
+    <div class="container">
+        <h1 class="title">Registration Form</h1>
+        <form action="/register" method="post" name="registration">
+
+            <label for="name"> Name</label>
+            <input type="text" name="name" id="name" placeholder="Username">
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Mail">
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Password">
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password">
+
+            <label for="dob">DOB</label>
+            <input type="date" name="dob" id="dob" placeholder="DOB">
+
+            <label for="phone">Phoneno</label>
+            <input type="tel" name="phone" id="phone" placeholder="PhoneNo">
+
+
+
+            <button type="submit" onclick="vaidate()">Register</button>
+            <!-- <a href="home.html">Back</a> -->
+        </form>
+        <!-- <script src="reg.js"></script> -->
+</body>
+
+</html>

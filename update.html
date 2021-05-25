@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: "Open Sans";
+            font-size: 14px;
+        }
+        
+        .container {
+            width: 500px;
+            margin: 25px auto;
+        }
+        
+        a {
+            color: chartreuse;
+        }
+        
+        form {
+            padding: 20px;
+            background: #2c3e50;
+            color: #fff;
+            border-radius: 4px;
+            margin-top: 100px;
+        }
+        
+        form label,
+        form input,
+        form button,
+        form select {
+            border: 0;
+            margin-bottom: 3px;
+            display: block;
+            width: 100%;
+        }
+        
+        form input,
+        form select {
+            height: 25px;
+            line-height: 25px;
+            background: #fff;
+            color: #000;
+            padding: 0 6px;
+            box-sizing: border-box;
+        }
+        
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+        
+        body {
+            background-image: url("images/signup-bg.jpg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .title {
+            text-align: center;
+            margin-bottom: -30px;
+        }
+        
+        form button {
+            height: 30px;
+            line-height: 30px;
+            background: #e67e22;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            cursor: pointer;
+        }
+        
+        form .error {
+            color: #ff0000;
+        }
+        
+        .article-reference {
+            margin-top: 15px;
+        }
+        
+        .article-reference a {
+            color: #e67e22;
+        }
+    </style>
+    <script>
+        $(function() {
+
+            $("form[name='updateForm']").validate({
+
+                rules: {
+
+                    email: {
+                        required: true,
+                        email: true
+                    },
+
+
+                    degree: "required",
+                    designation: "required",
+                    doc: "required",
+                    dou: "required"
+
+                },
+
+
+                messages: {
+
+                    email: "Please enter a valid email address",
+
+                    degree: {
+                        required: "Please select an option from the list, if none are appropriate please select 'Other'",
+                    },
+                    designation: {
+                        required: "Please select an option from the list, if none are appropriate please select 'Other'"
+                    },
+                    doc: "Please enter your date of created",
+                    doc: "Please enter your date of updated"
+
+
+                },
+
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+        });
+        window.addEventListener('load', () => {
+
+
+            const email = localStorage.getItem("EMAIL");
+            const dou = Date().substring(4, 15);
+            const datec = Date().substring(4, 15);
+            document.getElementById("email").value = email;
+            document.getElementById("doc").value = datec;
+            document.getElementById("dou").value = dou;
+
+        })
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Update Form</h1>
+        <form action="/update" method="post" name="updateForm">
+
+
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Mail">
+
+
+
+            <label for="degree">Academic Degree</label>
+            <select id="degree" name="degree">
+                <option value="">Select.....</option>
+                <option value="none">other</option>
+                <option value="be">B.E</option>
+                <option value="btech">B.TECH</option>
+                <option value="bsc">BSC</option>
+                <option value="bba">BBA</option>
+            </select>
+
+            <label for="designation">Designation</label>
+            <select id="designation" name="designation">
+                <option value="">Select.....</option>
+                <option value="none">other</option>
+                <option value="team_lead">Team leader</option>
+                <option value="manager">Manager</option>
+                <option value="developer">Developer</option>
+                <option value="tester">Tester</option>
+            </select>
+
+            <label for="doc">Date created</label>
+            <input type="text" name="doc" id="doc" placeholder="DOc">
+
+            <label for="dou">Date updated</label>
+            <input type="text" name="dou" id="dou" placeholder="DOu">
+
+            <button type="submit">Register</button>
+            <!-- <a href="home.html">Back</a> -->
+        </form>
+    </div>
+    <!-- <script src="profile.js"></script> -->
+</body>
+
+</html>
