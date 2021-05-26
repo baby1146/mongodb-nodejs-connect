@@ -1,0 +1,28 @@
+{
+  "name": "mongo-node-web",
+  "version": "1.0.0",
+  "description": "mongodb demo",
+  "main": "login.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cjs-loader": "^0.1.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baby1146/mongo-node-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baby1146/mongo-node-web/issues"
+  },
+  "homepage": "https://github.com/baby1146/mongo-node-web#readme"
+}

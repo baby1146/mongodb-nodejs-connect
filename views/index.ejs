@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        a.btn {
+            border-radius: .25rem;
+            border: 1px solid transparent;
+            padding: .5rem 1rem;
+            color: #fff;
+        }
+        
+        a.btn:hover {
+            border-radius: .25rem;
+        }
+    </style>
+</head>
+
+<body>
+    <% if(registerList!=null) { %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>email</th>
+                    <th>dob</th>
+                    <th>password</th>
+                    <th>Confirm-password</th>
+                    <th>phoneno</th>
+                    <th>degree</th>
+                    <th>designation</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <%registerList.forEach(register => {%>
+                    <tr>
+                        <th>
+                            <%= register.name%>
+                        </th>
+                        <td>
+                            <%= register.email %>
+                        </td>
+                        <td>
+                            <%= register.dob %>
+                        </td>
+                        <td>
+                            <%= register.password %>
+                        </td>
+                        <td>
+                            <%= register.confirmPassword %>
+                        </td>
+                        <td>
+                            <%= register.phone %>
+                        </td>
+                        <td>
+                            <%= register.degree %>
+                        </td>
+                        <td>
+                            <%= register.designation %>
+                        </td>
+
+                    </tr>
+                    <%})%>
+            </tbody>
+        </table>
+        <% } %>
+            <div>
+                <a class="btn btn-primary" href=" /update ">Update</a>
+            </div>
+</body>
+
+</html>

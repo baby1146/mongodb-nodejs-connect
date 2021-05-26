@@ -2,7 +2,10 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
-
+const ejs = require('ejs');
+const { kStringMaxLength } = require('buffer');
+app.use(express.static("public"));
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect("mongodb://localhost:27017/", { useNewUrlParser: true }, { useUnifiedTopology: true });
@@ -35,46 +38,22 @@ app.post("/register", function(req, res) {
         // res.send(req.body); 
         // console.log(req.body);
     mongoose.connect(url, function(err, db) {
-        let query = { email: req.body.email, password: req.body.password };
-        db.collection("registration").find(query).toArray(function(err, result) {
-            if (err)
+
+        db.collection("registration").insertOne(newserver, function(err, db) {
+            if (err) {
                 throw err;
-
-
-            if (!result.length)
-
-            {
-
-                db.collection("registration").insertOne(newindexnote, function(err, db) {
-                    if (err) {
-                        throw err;
-                    }
-                    newindexnote.save();
-                    console.log(" registersuccessfully");
-                    res.redirect("/login");
-
-
-
-                })
-            } else {
-                console.log("data already exists");
-                res.redirect("/register");
             }
-
-
-
+            newserver.save();
+            console.log("registration successful");
+            // alert("registration successful");
         })
 
 
 
 
 
-
-
-
-
     })
-
+    res.redirect("/login");
 
 })
 
@@ -223,6 +202,7 @@ app.get("/read", function(req, res) {
     res.sendFile(__dirname + "/read.html");
 })
 
+
 app.post("/read", function(req, res) {
     let newread = new reade({
         email: req.body.email,
@@ -232,18 +212,20 @@ app.post("/read", function(req, res) {
     mongoose.connect(url, function(err, db) {
         let query = { email: req.body.email };
 
-        db.collection("registration").find(query).toArray(function(err, result) {
+        db.collection("registration").find(query).toArray(function(err, register) {
             if (err) throw err;
 
-            if (result.length > 0) {
-                res.redirect("/update");
+            if (register.length > 0) {
+                res.render('index', { registerList: register });
+                res.render("/update", update.html);
 
             } else {
-                console.log("no records found:(")
+                res.render('index', { registerList: null });
+                console.log("no records found:")
                 res.redirect("/read");
             }
 
-            console.log(result);
+
         })
 
 
@@ -299,7 +281,7 @@ app.post("/update", function(req, res) {
             $set: {
                 designation: req.body.designation,
                 degree: req.body.degree,
-                dateC: Date().substring(4, 15),
+                dateC: req.body.doc,
                 dateU: req.body.dou
             }
         };

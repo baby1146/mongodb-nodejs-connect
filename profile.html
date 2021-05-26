@@ -8,97 +8,10 @@
     <title>Profile</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-
+    <link rel="stylesheet" href="stylesheet/style.css">
     <style>
-        @import url("https://fonts.googleapis.com/css?family=Open+Sans");
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            font-family: "Open Sans";
-            font-size: 14px;
-        }
-        
-        .container {
-            width: 500px;
-            margin: 25px auto;
-        }
-        
-        a {
-            color: chartreuse;
-        }
-        
-        form {
-            padding: 20px;
-            background: #2c3e50;
-            color: #fff;
-            border-radius: 4px;
-            margin-top: 100px;
-        }
-        
-        form label,
-        form input,
-        form button,
-        form select {
-            border: 0;
-            margin-bottom: 3px;
-            display: block;
-            width: 100%;
-        }
-        
-        form input,
-        form select {
-            height: 25px;
-            line-height: 25px;
-            background: #fff;
-            color: #000;
-            padding: 0 6px;
-            box-sizing: border-box;
-        }
-        
-        body,
-        html {
-            height: 100%;
-            margin: 0;
-        }
-        
         body {
             background-image: url("images/signup-bg.jpg");
-            height: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        .title {
-            text-align: center;
-            margin-bottom: -30px;
-        }
-        
-        form button {
-            height: 30px;
-            line-height: 30px;
-            background: #e67e22;
-            color: #fff;
-            text-transform: uppercase;
-            font-weight: bold;
-            margin-top: 1.5rem;
-            cursor: pointer;
-        }
-        
-        form .error {
-            color: #ff0000;
-        }
-        
-        .article-reference {
-            margin-top: 15px;
-        }
-        
-        .article-reference a {
-            color: #e67e22;
         }
     </style>
     <script>
@@ -148,13 +61,13 @@
             const name = localStorage.getItem("NAME");
             const email = localStorage.getItem("EMAIL");
             const dob = localStorage.getItem("DOB");
-            const datec = Date().substring(4, 15);
+
             const dou = Date().substring(4, 15);
 
             document.getElementById("name").value = name;
             document.getElementById("email").value = email;
             document.getElementById("dob").value = dob;
-            document.getElementById("doc").value = datec;
+            document.getElementById("doc").value = "May 18 2021";
             document.getElementById("dou").value = dou;
 
         })
