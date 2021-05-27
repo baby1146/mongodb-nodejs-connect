@@ -12,20 +12,47 @@
             background-image: url("images/signup-bg.jpg");
         }
     </style>
+    <script>
+        $(function() {
+
+            $("form[name='deleteForm']").validate({
+
+                rules: {
+
+                    email: {
+                        required: true,
+                        email: true
+                    }
+
+                },
+
+                messages: {
+
+                    email: "Please enter a valid email address",
+
+                },
+
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
     <div class="container">
         <h1 class="title">Delete Form</h1>
-        <form action="/delete" method="post" name="profileForm">
+        <form action="/delete" method="post" name="deleteForm">
 
             <label for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="Mail">
 
             <button type="submit">Delete</button>
-            <!-- <a href="home.html">Back</a> -->
+
         </form>
     </div>
+    <a href="/home" class="btn btn-primary">Back</a>
 </body>
 
 </html>

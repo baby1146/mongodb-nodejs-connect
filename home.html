@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="home.css">
+
+    <style>
+        html {
+            box-sizing: border-box;
+            font-family: Lato;
+        }
+        
+        h2 {
+            color: black;
+        }
+        
+        a {
+            width: 150px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        a:link,
+        a:visited {
+            background-color: white;
+            color: black;
+            border: 2px solid green;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        a:hover,
+        a:active {
+            background-color: green;
+            color: white;
+        }
+        
+        #signup {
+            margin-top: 60px;
+            margin-left: 12px;
+        }
+        
+        #signin {
+            margin-top: 30px;
+            margin-left: 0px;
+        }
+        
+        div {
+            height: 400px;
+            width: 400px;
+            color: #fff;
+            background: whitesmoke;
+            padding: 12px;
+            margin-right: 4px;
+            display: inline-block;
+            margin: 100px;
+        }
+        
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+        
+        .bg {
+            background-image: url("images/signup-bg.jpg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="bg">
+        <div id="main" align="center">
+            <h2><b>HOME PAGE</b></h2>>
+            <a href="/delete" id="signin">Delete</a><br>
+            <a href="/read" id="signup">Read</a>
+            <a href="/update" id="signup">update</a>
+        </div>
+    </section>
+</body>
+
+</html>

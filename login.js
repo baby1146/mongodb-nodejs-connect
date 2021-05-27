@@ -107,9 +107,7 @@ app.get("/profile", function(req, res) {
 })
 
 const profileData = {
-    name: String,
-    email: String,
-    dob: String,
+
     degree: String,
     designation: String,
     doc: String,
@@ -123,9 +121,7 @@ const profileNote = mongoose.model("profileNote", profileData);
 
 app.post("/profile", function(req, res) {
     let newNote = new profileNote({
-        name: req.body.name,
-        email: req.body.email,
-        dob: req.body.dob,
+
         degree: req.body.degree,
         designation: req.body.designation,
         doc: req.body.doc,
@@ -133,16 +129,29 @@ app.post("/profile", function(req, res) {
 
     })
 
+    mongoose.connect(url, function(err, db) {
+
+        db.collection("registration").insertOne(newNote, function(err, db) {
+            if (err) {
+                throw err;
+            }
+            console.log(res.db);
+            newNote.save();
+            console.log("registration successful");
+            // alert("registration successful");
+        })
 
 
 
-    res.redirect("/delete");
+        res.redirect("/home");
 
+
+    })
 
 })
-
-
-
+app.get("/home", function(req, res) {
+    res.sendFile(__dirname + "/home.html");
+})
 
 const delschema = {
 
@@ -174,7 +183,7 @@ app.post("/delete", function(req, res) {
             }
             //query.save();
             console.log("new data deleted");
-            res.redirect("/read");
+            res.redirect("/home");
         })
 
 
@@ -299,7 +308,7 @@ app.post("/update", function(req, res) {
 
 
     })
-    res.redirect("/login");
+    res.redirect("/home");
 
 })
 
