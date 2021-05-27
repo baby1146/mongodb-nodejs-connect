@@ -12,54 +12,83 @@
             border: 1px solid transparent;
             padding: .5rem 1rem;
             color: #fff;
+            text-align: center;
+            margin-left: 38em;
         }
         
         a.btn:hover {
             border-radius: .25rem;
         }
+        
+        table {
+            /* margin-top: 10em;
+            margin-right: 50px; */
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
+
+
+
     <% if(registerList!=null) { %>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>email</th>
-                    <th>dob</th>
-                    <th>password</th>
-                    <th>Confirm-password</th>
-                    <th>phoneno</th>
-                    <th>degree</th>
-                    <th>designation</th>
+        <table class="table table-striped table-hover ">
 
 
-                </tr>
-            </thead>
+
             <tbody>
                 <%registerList.forEach(register => {%>
-                    <tr>
-                        <th>
-                            <%= register.name%>
-                        </th>
+
+                    <tr scope=>
+
+                        <td>
+                            <th>Name</th>
+                        </td>
+
+                        <td>
+                            <strong>
+                                <%=register.name %>
+                                    </strong>
+                        </td>
+                    </tr>
+                    <tr scope="row">
+                        <td>
+                            <th>email</th>
+                        </td>
                         <td>
                             <%= register.email %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th>dob</th>
                         </td>
                         <td>
                             <%= register.dob %>
                         </td>
+                    </tr>
+
+                    <tr>
                         <td>
-                            <%= register.password %>
-                        </td>
-                        <td>
-                            <%= register.confirmPassword %>
+                            <th>phoneno</th>
                         </td>
                         <td>
                             <%= register.phone %>
                         </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            <th>degree</th>
+                        </td>
                         <td>
                             <%= register.degree %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th>designation</th>
                         </td>
                         <td>
                             <%= register.designation %>
@@ -70,9 +99,12 @@
             </tbody>
         </table>
         <% } %>
+
             <div>
-                <a class="btn btn-primary" href=" /update ">Update</a>
+                <a class=" btn btn-primary " href=" /update ">Update</a>
             </div>
 </body>
+
+</html>
 
 </html>
